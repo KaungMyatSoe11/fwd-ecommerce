@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Favorite from "./Favorite";
 import Cart from "./Cart";
+import Favorite from "./Favorite";
 
 const ProductCard = ({ product }) => {
   return (

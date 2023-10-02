@@ -13,7 +13,7 @@ const Category = async () => {
     <div>
       <h3 className="text-lg font-semibold mb-5">Categories</h3>
 
-      <div className="flex gap-3 flex-wrap ">
+      <div className="flex  flex-wrap flex-row ">
         {category.map((ct, index) => (
           <CategoryCard key={ct + index} category={ct} />
         ))}

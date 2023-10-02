@@ -1,4 +1,5 @@
 import Category from "@/components/HomePage/Category";
+import ForYouProduct from "@/components/HomePage/ForYouProduct";
 import PopularProduct from "@/components/HomePage/PopularProduct";
 import ProductProvider from "@/context/ProductProvider";
 import Image from "next/image";
@@ -12,6 +13,7 @@ export default async function Home() {
           <br />
           <Category />
           <PopularProduct />
+          <ForYouProduct/>
         </div>
       </main>
     </ProductProvider>

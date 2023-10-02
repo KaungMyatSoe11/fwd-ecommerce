@@ -1,7 +1,7 @@
 "use client";
 import { ProductContext } from "@/context/ProductProvider";
 import { useContext } from "react";
-import ProductCard from "./ProductCard";
+import ProductCard from "../../utils/ProductCard";
 
 const PopularProduct = () => {
   const { popularProducts } = useContext(ProductContext);
