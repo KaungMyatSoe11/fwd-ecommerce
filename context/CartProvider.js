@@ -23,6 +23,17 @@ const CartProvider = ({ children }) => {
     setCartProducts([...cartProducts, product]);
   };
 
+  const cartUpdate = (update_product) => {
+    console.log(update_product);
+   const updatedProducts= cartProducts.map(product=>{
+      if(product.id == update_product.id){
+        return update_product
+      }
+      return product
+    })
+    setCartProducts([...updatedProducts])
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -31,6 +42,7 @@ const CartProvider = ({ children }) => {
         cartCount,
         isOpenCartPanel,
         setIsOpenCartPanel,
+        cartUpdate,
       }}
     >
       {children}
