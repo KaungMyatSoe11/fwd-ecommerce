@@ -1,9 +1,10 @@
 import Image from "next/image";
 import CartProductAction from "./CartProductAction";
+import CartDelete from "./CartDelete";
 
 const CartProduct = ({ product }) => {
   return (
-    <div className="flex gap-x-5 mb-5">
+    <div className="flex gap-x-5 mb-5 relative">
       <div className="w-[20%]">
         <Image
           src={product.thumbnail}
@@ -23,8 +24,10 @@ const CartProduct = ({ product }) => {
             )}
           </p>
         )}
+        <p className="text-xs ">{product.stock} items left!</p>
       <CartProductAction product={product} />
       </div>
+      <CartDelete product_id={product.id}/>
     </div>
   );
 };

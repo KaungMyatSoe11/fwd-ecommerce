@@ -24,9 +24,19 @@ const CartProductAction = ({ product }) => {
         />
       </button>
       <p>{product.orderQuantity}</p>
-      <div onClick={onAddQuantity}>
-        <AiOutlinePlus size={26} className="text-violet-700" />
-      </div>
+      <button
+        onClick={onAddQuantity}
+        disabled={product.orderQuantity == product.stock}
+      >
+        <AiOutlinePlus
+          size={26}
+          className={`${
+            product.orderQuantity == product.stock
+              ? "text-gray-500"
+              : "text-violet-700"
+          }`}
+        />
+      </button>
     </div>
   );
 };
