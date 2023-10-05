@@ -20,7 +20,6 @@ const CartProvider = ({ children }) => {
         : product.price * product.orderQuantity;
       cartTotalCost += eachProductCost;
     });
-    console.log({ cartTotalCost });
     setCartCalculate(cartTotalCost)
   }, [cartProducts]);
 

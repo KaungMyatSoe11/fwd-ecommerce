@@ -5,7 +5,6 @@ import ProductCard from "../../utils/ProductCard";
 
 const PopularProduct = () => {
   const { popularProducts } = useContext(ProductContext);
-  console.log(popularProducts);
   return (
     <section className="my-12">
         <h2 className="text-lg font-semibold">Popular Products</h2>
