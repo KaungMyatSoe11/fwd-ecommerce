@@ -7,6 +7,7 @@ const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [popularProducts, setPopularProducts] = useState([]);
   const [forYouProducts, setForYouProducts] = useState([]);
+  const [favoriteProducts, setFavoriteProducts] = useState([])
 
   const ForYouProduct = (products_array) => {
     let forU = [];
@@ -32,6 +33,14 @@ const ProductProvider = ({ children }) => {
     // productFilter = productFilter.slice(0, 5);
     setPopularProducts([...pProduct]);
   };
+
+  const addFavoriteProduct=(product)=>{
+//add to favorite products state
+  }
+
+  const removeFavoriteProduct=(product_id)=>{
+    //remove product from favoriteProducts state
+  }
 
 
   useEffect(() => {
