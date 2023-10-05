@@ -10,7 +10,7 @@ const ProductCard = ({ product }) => {
           <Cart product={product} />
         </button>
         <div className="relative">
-            <Favorite />
+            <Favorite product={product} />
         
           <Image
             width={500}

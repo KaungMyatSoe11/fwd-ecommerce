@@ -1,11 +1,19 @@
-import { useState } from "react";
+import { ProductContext } from "@/context/ProductProvider";
+import { useContext, useState } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-const Favorite = () => {
+const Favorite = ({product}) => {
   const [isFavorite, setIsFavorite] = useState(false);
+  const { addFavoriteProduct, removeFavoriteProduct,favoriteProducts } = useContext(
+    ProductContext
+  );
 
   const onClickFavoriteHandler = () => {
+    if (!isFavorite) {
+      addFavoriteProduct(product);
+    }else{
+      removeFavoriteProduct(product.id)
+    }
     setIsFavorite(!isFavorite);
-    //check condition
   };
   return (
     <button className="absolute top-2 right-2" onClick={onClickFavoriteHandler}>

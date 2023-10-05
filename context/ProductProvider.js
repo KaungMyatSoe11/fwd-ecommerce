@@ -7,18 +7,18 @@ const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [popularProducts, setPopularProducts] = useState([]);
   const [forYouProducts, setForYouProducts] = useState([]);
-  const [favoriteProducts, setFavoriteProducts] = useState([])
+  const [favoriteProducts, setFavoriteProducts] = useState([]);
 
   const ForYouProduct = (products_array) => {
     let forU = [];
-      while (forU.length != 8) {
-        const randProduct = randomItem(products_array);
-        const isExist = forU.find((item) => item.id == randProduct.id);
-        if (!isExist) {
-          forU.push(randProduct);
-        }
+    while (forU.length != 8) {
+      const randProduct = randomItem(products_array);
+      const isExist = forU.find((item) => item.id == randProduct.id);
+      if (!isExist) {
+        forU.push(randProduct);
       }
-      setForYouProducts([...forU]);
+    }
+    setForYouProducts([...forU]);
   };
 
   const loadProduct = async () => {
@@ -34,21 +34,34 @@ const ProductProvider = ({ children }) => {
     setPopularProducts([...pProduct]);
   };
 
-  const addFavoriteProduct=(product)=>{
-//add to favorite products state
-  }
+  const addFavoriteProduct = (product) => {
+    //add to favorite products state
+    setFavoriteProducts([...favoriteProducts, product]);
+  };
 
-  const removeFavoriteProduct=(product_id)=>{
+  const removeFavoriteProduct = (product_id) => {
     //remove product from favoriteProducts state
-  }
-
+    const filterProducts = favoriteProducts.filter(
+      (pd) => pd.id !== product_id
+    );
+    setFavoriteProducts([...filterProducts]);
+  };
 
   useEffect(() => {
     loadProduct();
   }, []);
 
   return (
-    <ProductContext.Provider value={{ products, popularProducts,forYouProducts }}>
+    <ProductContext.Provider
+      value={{
+        products,
+        popularProducts,
+        forYouProducts,
+        addFavoriteProduct,
+        removeFavoriteProduct,
+        favoriteProducts,
+      }}
+    >
       {children}
     </ProductContext.Provider>
   );
