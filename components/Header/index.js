@@ -8,7 +8,7 @@ const Header = () => {
         <nav className="flex justify-between ">
           <div>logo</div>
           <div className="flex gap-4">
-            <Link href={"/favorite"}>Favorite Product</Link>
+            <Link href={"/products/favorite"}>Favorite Product</Link>
             <div className="cart">
               <CartCount />
             </div>

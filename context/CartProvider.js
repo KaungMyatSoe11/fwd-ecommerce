@@ -20,7 +20,7 @@ const CartProvider = ({ children }) => {
         : product.price * product.orderQuantity;
       cartTotalCost += eachProductCost;
     });
-    setCartCalculate(cartTotalCost)
+    setCartCalculate(cartTotalCost);
   }, [cartProducts]);
 
   const addCart = (product) => {
@@ -47,10 +47,30 @@ const CartProvider = ({ children }) => {
     setCartProducts([...updatedProducts]);
   };
 
-  const removeCart=(product_id)=>{
-  const deletedProduct=  cartProducts.filter(product=>product.id !==product_id)
-  setCartProducts([...deletedProduct])
-  }
+  const removeCart = (product_id) => {
+    const deletedProduct = cartProducts.filter(
+      (product) => product.id !== product_id
+    );
+    setCartProducts([...deletedProduct]);
+  };
+
+  const AddAllFavoriteProductsToCart = (favoriteProducts) => {
+    debugger;
+    let checkFavoriteProducts = [];
+    favoriteProducts.forEach((product) => {
+      const isExit = cartProducts.find((p) => p.id == product.id);
+      if (!isExit) {
+        product.orderQuantity = 1;
+        if (product.discountPercentage) {
+          product.discountAmount = Math.round(
+            product.price - product.price * (product.discountPercentage / 100)
+          );
+        }
+        checkFavoriteProducts.push(product);
+      }
+    });
+    setCartProducts([...cartProducts, ...checkFavoriteProducts]);
+  };
 
   return (
     <CartContext.Provider
@@ -62,7 +82,8 @@ const CartProvider = ({ children }) => {
         setIsOpenCartPanel,
         cartUpdate,
         cartCalculate,
-        removeCart
+        removeCart,
+        AddAllFavoriteProductsToCart,
       }}
     >
       {children}

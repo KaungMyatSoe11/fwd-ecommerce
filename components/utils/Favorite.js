@@ -1,12 +1,20 @@
 import { ProductContext } from "@/context/ProductProvider";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 const Favorite = ({ product }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const {
     addFavoriteProduct,
     removeFavoriteProduct,
+    favoriteProducts,
   } = useContext(ProductContext);
+  useEffect(() => {
+    const isFindProduct = favoriteProducts.find((pd) => pd.id == product.id);
+    if (isFindProduct) {
+      setIsFavorite(true);
+    }
+  }, [favoriteProducts, product.id]);
+
   const onClickFavoriteHandler = () => {
     if (!isFavorite) {
       addFavoriteProduct(product);

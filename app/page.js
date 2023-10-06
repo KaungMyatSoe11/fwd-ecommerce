@@ -1,7 +1,6 @@
 import Category from "@/components/HomePage/Category";
 import ForYouProduct from "@/components/HomePage/ForYouProduct";
 import PopularProduct from "@/components/HomePage/PopularProduct";
-import ProductProvider from "@/context/ProductProvider";
 
 export default async function Home() {
   return (
